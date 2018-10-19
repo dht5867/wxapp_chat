@@ -1,0 +1,72 @@
+<view style="width:{{width}}px;height:{{height}}px;" class='main'>
+<view class="show">
+  <scroll-view scroll-y class='msg_frame'>
+    <view wx:for="{{message}}" wx:for-index="idx" wx:for-item="item">
+      <view wx:if="{{item.type == 'left'}}">
+
+        <view class="msg_row">
+          <view class="msg_time">{{item.time}}</view>
+          <view class="msg_info">
+            <view class="avatar_left">
+              <image class='avatar to_left' src="{{item.avatar}}"></image>            
+            </view>
+            <view class="content_left">
+              <view class="content" style='float:left'>
+                <text class="content_message">{{item.msg}}</text>
+              </view>         
+            </view>
+          </view>
+        </view>
+
+      </view>
+      <view wx:else>
+
+        <view class="msg_row">
+          <view class="msg_time">{{item.time}}</view>
+          <view class="msg_info">
+            <view class="avatar_right">
+              <image class='avatar to_right' src="{{item.avatar}}"></image>            
+            </view>
+            <view class="content_right">
+              <view class="content" style='float:right'>
+                <text class="content_message">{{item.msg}}</text>
+              </view>         
+            </view>
+          </view>
+        </view>
+
+      </view>
+    </view>
+  </scroll-view>
+</view>
+<view class="chat">
+  <view class="fast">
+    <view class="quick">我想</view>
+    <view class="quick round" bindtap="getid">来个formid</view>
+  </view>
+  <view class="text">
+    <form bindsubmit="sendMsg">
+      <view class='left_frame'>
+        <input name="msg" value="{{message_input}}" class='chat_input'/>
+      </view>
+      <view class='right_frame'>
+        <image bindtap="emoji" class='emoji' src="../../images/emoji.png"></image>
+        <button class='send' formType="submit">发</button>
+      </view>
+    </form>
+  </view>
+</view>
+</view>
+
+<view class="emoji_frame" style='display:{{show_emoji}};'>
+<view class="shut_frame">
+<image bindtap="shut" class='shut_pic' src="../../images/red_del.png"></image>
+</view>
+<view class="emoji_block">
+  <view wx:for="{{emojis}}" wx:for-index="idx" wx:for-item="item">
+    <view class='emoji_one'>
+      <image data-id="{{idx}}" bindtap="choose_emoji" class='emoji_pic' src="{{item}}"></image>
+    </view>
+  </view>
+</view>
+</view>

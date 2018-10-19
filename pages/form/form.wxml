@@ -1,0 +1,5 @@
+<form bindsubmit="formSubmit" report-submit='true'>
+  <view class="btn-area">
+    <button formType="submit">来一个formid</button>
+  </view>
+</form>
